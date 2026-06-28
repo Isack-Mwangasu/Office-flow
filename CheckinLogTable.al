@@ -5,8 +5,16 @@ table 50201 "OFL Employee Check-In Log"
 
     fields
     {
-        field(1; "Entry No."; Integer) { AutoIncrement = true; }
-        field(2; "Employee No."; Code[20]) { TableRelation = Employee; }
+        field(1; "Entry No."; Integer)
+        {
+            AutoIncrement = true;
+        }
+
+        field(2; "Employee No."; Code[20])
+        {
+            TableRelation = Employee;
+        }
+
         field(3; "Employee Name"; Text[100])
         {
             FieldClass = FlowField;
