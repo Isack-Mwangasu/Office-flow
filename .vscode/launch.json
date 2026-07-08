@@ -7,6 +7,7 @@
             "type": "al",
             "environmentType": "Sandbox",
             "environmentName": "sandbox",
+            "schemaUpdateMode": "Synchronize",
             "tenant": "4e19a68e-2def-4107-ba81-b5fb1bdcd10c",
             "startupObjectId": 50201,
             "startupObjectType": "Page",
