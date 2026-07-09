@@ -28,6 +28,13 @@ page 50203 "OFL Leave Request Card"
                 field("Leave Type"; Rec."Leave Type") { ApplicationArea = All; }
                 field("Start Date"; Rec."Start Date") { ApplicationArea = All; }
                 field("End Date"; Rec."End Date") { ApplicationArea = All; }
+
+                field("Duration (Days)"; Rec."Duration (Days)")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Calculates the total days requested for leave automatically.';
+                }
+
                 field("Reason for Leave"; Rec."Reason for Leave") { ApplicationArea = All; MultiLine = true; }
                 field("Approval Status"; Rec."Approval Status") { ApplicationArea = All; }
             }

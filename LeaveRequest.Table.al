@@ -17,10 +17,20 @@ table 50202 "OFL Leave Request"
         field(3; "Start Date"; Date)
         {
             Caption = 'Start Date';
+
+            trigger OnValidate()
+            begin
+                CalculateDuration();
+            end;
         }
         field(4; "End Date"; Date)
         {
             Caption = 'End Date';
+
+            trigger OnValidate()
+            begin
+                CalculateDuration();
+            end;
         }
         field(5; "Leave Type"; enum "OFL Leave Type")
         {
@@ -35,6 +45,11 @@ table 50202 "OFL Leave Request"
         {
             Caption = 'Reason for Leave';
         }
+        field(8; "Duration (Days)"; Integer)
+        {
+            Editable = false;
+            Caption = 'Duration (Days)';
+        }
     }
 
     keys
@@ -44,4 +59,17 @@ table 50202 "OFL Leave Request"
             Clustered = true;
         }
     }
+
+    // This handles the validation logic in one central place
+    local procedure CalculateDuration()
+    begin
+        if ("Start Date" <> 0D) and ("End Date" <> 0D) then begin
+            if "End Date" < "Start Date" then
+                Error('End Date cannot be earlier than the Start Date.');
+
+            "Duration (Days)" := ("End Date" - "Start Date") + 1;
+        end else begin
+            "Duration (Days)" := 0;
+        end;
+    end;
 }
