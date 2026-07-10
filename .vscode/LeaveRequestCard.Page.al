@@ -40,4 +40,44 @@ page 50203 "OFL Leave Request Card"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(Approve)
+            {
+                ApplicationArea = All;
+                Caption = 'Approve';
+                Image = Approve;
+                Promoted = true;
+                PromotedCategory = Process;
+                ToolTip = 'Approve this leave request.';
+
+                trigger OnAction()
+                begin
+                    Rec."Approval Status" := Rec."Approval Status"::Approved;
+                    Rec.Modify(true);
+                    Message('Leave request has been successfully approved.');
+                end;
+            }
+
+            action(Reject)
+            {
+                ApplicationArea = All;
+                Caption = 'Reject';
+                Image = Reject;
+                Promoted = true;
+                PromotedCategory = Process;
+                ToolTip = 'Reject this leave request.';
+
+                trigger OnAction()
+                begin
+                    Rec."Approval Status" := Rec."Approval Status"::Rejected;
+                    Rec.Modify(true);
+                    Message('Leave request has been rejected.');
+                end;
+            }
+        }
+    }
 }
