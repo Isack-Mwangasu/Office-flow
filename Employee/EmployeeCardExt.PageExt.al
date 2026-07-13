@@ -2,7 +2,6 @@ pageextension 50200 "OFL Employee Card Ext" extends "Employee Card"
 {
     layout
     {
-        // Add our custom fields to the end of the standard 'General' section
         addlast(General)
         {
             field("OFL Work Mode Preference"; Rec."OFL Work Mode Preference")
